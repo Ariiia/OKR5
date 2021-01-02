@@ -1,10 +1,10 @@
-import {sendRequest} from "./mainDB.js"
+import {sendRequest} from './mainDB.js';
 
 export default class Order {
     constructor(cart){
-        this.hash = "order";
+        this.hash = 'order';
 
-        this.cart = cart
+        this.cart = cart;
     }
 
     loadPage(subHash){
@@ -18,7 +18,7 @@ export default class Order {
     }
     
     loadValidation(){
-        const page = document.getElementById("page-content");
+        const page = document.getElementById('page-content');
 
         page.innerHTML = `
             <div class="validation">
@@ -88,10 +88,10 @@ export default class Order {
                     <button id="reset" type="reset">Очистить</button>
                 </form>
             </div>
-        `
+        `;
 
 
-        let form = document.getElementById("valid-form");
+        let form = document.getElementById('valid-form');
 
         form.addEventListener('submit', e => {
             e.preventDefault();
@@ -108,11 +108,11 @@ export default class Order {
                 cvv: form.elements.namedItem('cvv').value
             };
 
-            let clientOrder = JSON.parse(localStorage.getItem("cart"));
+            let clientOrder = JSON.parse(localStorage.getItem('cart'));
 
             let clientData = {clientInformation, clientOrder};
 
-            sendRequest('POST', "https://my-json-server.typicode.com/Ariiia/OKR4/orders", JSON.stringify(clientData))
+            sendRequest('POST', 'https://my-json-server.typicode.com/Ariiia/OKR4/orders', JSON.stringify(clientData))
                 .then( data => {    
                     this.loadOrder(data.id, clientInformation);
                     
@@ -127,8 +127,8 @@ export default class Order {
     }
 
     loadOrder(subHash, clientInformation) {
-        history.pushState(null, null, '#order/' + subHash)
-        const page = document.getElementById("page-content");
+        history.pushState(null, null, '#order/' + subHash);
+        const page = document.getElementById('page-content');
         page.innerHTML = `
             <p class="order-top">Мы готовим ваш заказ </p>
             <div class="order">
@@ -171,12 +171,12 @@ export default class Order {
                 </div>       
             </div>
         `;
-        this.cart.clearCart()
+        this.cart.clearCart();
 
     }
 
     orderedItems() {
-        let clientOrder = JSON.parse(localStorage.getItem("cart"));
+        let clientOrder = JSON.parse(localStorage.getItem('cart'));
 
         let itemsInCart = [];
         clientOrder.forEach(item => {
@@ -184,8 +184,8 @@ export default class Order {
         });
 
         let itemsToShow = this.cart.products.filter(product => {
-            return itemsInCart.includes(product.url)
-        })
+            return itemsInCart.includes(product.url);
+        });
 
         let orderBody = '';
 
@@ -203,8 +203,8 @@ export default class Order {
                     <span></span> 
                     <span class="right">${desert.price*amount} ₴</span>          
                 </div>
-            `
-            totalPrice += desert.price*amount
+            `;
+            totalPrice += desert.price*amount;
         });
 
         orderBody += `
@@ -213,15 +213,15 @@ export default class Order {
                 <span></span>
                 <span class="right">${totalPrice} ₴</span>   
             </div>
-        `
+        `;
         return orderBody;
     }
 
     showError(){
-        document.getElementById("page-content").innerHTML = `
+        document.getElementById('page-content').innerHTML = `
         <div role="alert">
             Some problems with the data server. Sorry
         </div>
-        `
+        `;
     }
 }

@@ -1,4 +1,4 @@
-import {getDB} from "./mainDB.js"
+import {getDB} from './mainDB.js';
 
 export default class Home {
     constructor (){
@@ -14,7 +14,7 @@ export default class Home {
     async loadHome(){
         history.pushState(null, null, '#home');
 
-        const page = document.getElementById("page-content");
+        const page = document.getElementById('page-content');
 
         let products = await getDB('https://my-json-server.typicode.com/Ariiia/OKR4/products');
 
@@ -49,7 +49,7 @@ export default class Home {
                     ${this.homeProducts(products_to_show)}
                 </div>
             </div>
-        `
+        `;
 
         this.movingSlider();
     }
@@ -78,9 +78,9 @@ export default class Home {
         let inputs = [];
         let time = 5000;
                     
-        inputs[0] = document.getElementById("r1");
-        inputs[1] = document.getElementById("r2");
-        inputs[2] = document.getElementById("r3");
+        inputs[0] = document.getElementById('r1');
+        inputs[1] = document.getElementById('r2');
+        inputs[2] = document.getElementById('r3');
                     
         function slideSlider() {
             inputs[i].click();

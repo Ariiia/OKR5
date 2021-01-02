@@ -1,8 +1,8 @@
-import {getDB} from "./mainDB.js"
+import {getDB} from './mainDB.js';
 
 export default class Product {
     constructor(){
-        this.hash = "product";
+        this.hash = 'product';
         
     }
 
@@ -17,7 +17,7 @@ export default class Product {
     }
     
     async loadProduct(subHash){
-        const page = document.getElementById("page-content");
+        const page = document.getElementById('page-content');
 
         let products = await getDB('https://my-json-server.typicode.com/Ariiia/OKR4/products');
         let product = products.filter(product => {
@@ -51,6 +51,6 @@ export default class Product {
                 </div>
                 </div>
             </div>
-        `
+        `;
     }
 }

@@ -1,8 +1,8 @@
-import {getDB} from "./mainDB.js"
+import {getDB} from './mainDB.js';
 
 export default class Cart {
     constructor(){
-        this.hash = "cart";
+        this.hash = 'cart';
         
         this.products;
         this.totalPrice = 0;
@@ -30,17 +30,17 @@ export default class Cart {
     }
 
     loadCart() {
-        const page = document.getElementById("page-content");
+        const page = document.getElementById('page-content');
         
         let itemsInCart = [];
-        let cartLocalStorage = JSON.parse(localStorage.getItem("cart"));
+        let cartLocalStorage = JSON.parse(localStorage.getItem('cart'));
         cartLocalStorage.forEach(item => {
             itemsInCart.push(item.url);
         });
 
         let itemsToShow = this.products.filter(product => {
-            return itemsInCart.includes(product.url)
-        })
+            return itemsInCart.includes(product.url);
+        });
 
         page.innerHTML = this.loadCartTemplate();
 
@@ -51,14 +51,14 @@ export default class Cart {
         }
 
         let cart_body = document.querySelector('.cart-body');
-        let counterCart = document.getElementById("cart-counter");
-        let totalPriceEl = document.getElementById("total-price");
+        let counterCart = document.getElementById('cart-counter');
+        let totalPriceEl = document.getElementById('total-price');
 
 
         itemsToShow.forEach(item => {
             let item_amount = this.getAmountFromLocalStorage(item.url);
 
-            this.totalProducts += item_amount
+            this.totalProducts += item_amount;
             counterCart.innerText = this.totalProducts;
 
             this.totalPrice += (item.price * item_amount);
@@ -74,19 +74,19 @@ export default class Cart {
         });
 
         itemsToShow.forEach(item => {
-            let delete_btn = document.getElementById("delete-" + item.url);
-            delete_btn.addEventListener("click", (e) => {
+            let delete_btn = document.getElementById('delete-' + item.url);
+            delete_btn.addEventListener('click', (e) => {
                 e.preventDefault();
                 cartLocalStorage.forEach(localItem => {
                     if(localItem.url == item.url){
                         counterCart.innerText = parseInt(counterCart.innerText) - localItem.amount;
                         cartLocalStorage.splice(cartLocalStorage.indexOf(localItem), 1);
                     }
-                })   
+                });   
                              
-                localStorage.setItem("cart", JSON.stringify(cartLocalStorage));
+                localStorage.setItem('cart', JSON.stringify(cartLocalStorage));
     
-                this.loadCart()
+                this.loadCart();
             });
         });
 
@@ -97,15 +97,15 @@ export default class Cart {
     }
 
     addItemToCartLocalStorage(subHash) {
-        window.location = "#product/" + subHash;
-        let counterCart = document.getElementById("cart-counter");
+        window.location = '#product/' + subHash;
+        let counterCart = document.getElementById('cart-counter');
 
-        let itemsCart = JSON.parse(localStorage.getItem("cart"));
+        let itemsCart = JSON.parse(localStorage.getItem('cart'));
 
         if(!itemsCart){
             itemsCart = [];
-            itemsCart.push({url: subHash, amount: 1})
-            localStorage.setItem("cart", JSON.stringify(itemsCart));
+            itemsCart.push({url: subHash, amount: 1});
+            localStorage.setItem('cart', JSON.stringify(itemsCart));
             counterCart.innerText = parseInt(counterCart.innerText) + 1;
             return true;
         }
@@ -115,19 +115,19 @@ export default class Cart {
             if (itemsCart[i].url === subHash){
                 itemsCart[i].amount++;
                 exist = true;
-                break
+                break;
             }
         }
 
         if (!exist){
             itemsCart.push({url: subHash, amount: 1});
-            localStorage.setItem("cart", JSON.stringify(itemsCart));
+            localStorage.setItem('cart', JSON.stringify(itemsCart));
             counterCart.innerText = parseInt(counterCart.innerText) + 1;
             return true;
         }
 
         
-        localStorage.setItem("cart", JSON.stringify(itemsCart));
+        localStorage.setItem('cart', JSON.stringify(itemsCart));
 
         counterCart.innerText = parseInt(counterCart.innerText) + 1;
 
@@ -135,7 +135,7 @@ export default class Cart {
     }
 
     getAmountFromLocalStorage(url) {
-        let itemsCart = JSON.parse(localStorage.getItem("cart"));
+        let itemsCart = JSON.parse(localStorage.getItem('cart'));
 
         for (let i = 0; i < itemsCart.length; i++) {
             if (itemsCart[i].url === url){
@@ -165,7 +165,7 @@ export default class Cart {
                     </p>
                 </div>
             </div>
-        `
+        `;
     }
 
     loadCartDesertTemplate(desert, amount) {
@@ -202,17 +202,17 @@ export default class Cart {
                                 ₴
                             </span>
                         </li>
-        `
+        `;
     }
 
 
     clearCart(){
-        localStorage.setItem("cart", JSON.stringify([]));
+        localStorage.setItem('cart', JSON.stringify([]));
 
         this.totalPrice = 0;
         this.totalProducts = 0;
 
-        let counterCart = document.getElementById("cart-counter");
+        let counterCart = document.getElementById('cart-counter');
         counterCart.innerText = 0;
 
         //this.loadPage();

@@ -1,8 +1,8 @@
-import {getDB} from "./mainDB.js"
+import {getDB} from './mainDB.js';
 
 export default class Action {
     constructor(){
-        this.hash = "action";
+        this.hash = 'action';
         
     }
 
@@ -17,7 +17,7 @@ export default class Action {
     }
     
     async loadAction(subHash){
-        const page = document.getElementById("page-content");
+        const page = document.getElementById('page-content');
 
         let actions = await getDB('https://my-json-server.typicode.com/Ariiia/OKR4/actions');
         let action = actions.filter(action => {
@@ -40,6 +40,6 @@ export default class Action {
                     </div>
                 </div>
             </div>
-        `
+        `;
     }
 }

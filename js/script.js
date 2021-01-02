@@ -1,9 +1,9 @@
-import Home from "./home.js"
-import Product from "./product.js"
-import Catalog from "./catalog.js"
-import Action from "./action.js"
-import Cart from "./cart.js"
-import Order from "./order.js"
+import Home from './home.js';
+import Product from './product.js';
+import Catalog from './catalog.js';
+import Action from './action.js';
+import Cart from './cart.js';
+import Order from './order.js';
 
 let homePage = new Home();
 let productPage = new Product();
@@ -13,24 +13,24 @@ let cartPage = new Cart();
 let orderPage = new Order(cartPage);
 
 let routs = {
-    "home": '',
-    "product": ['caramel', 'orangechoco', 'lavliheart', 'mangochia', 'strawberryyogurt',
-                'brauni', 'caramelyoghurt', 'strawberryyoghurt', 'cherry', 'marakuya'],
-    "catalog": ['Deserts', 'Cakes', 'Cheesecakes'],
-    "action": ['cherry_fever', 'new_year', 'cake_sale'],
-    "cart": ['caramel', 'orangechoco', 'lavliheart', 'mangochia', 'strawberryyogurt',
-            'brauni', 'caramelyoghurt', 'strawberryyoghurt', 'cherry', 'marakuya', 'clear'],
-    "order": ['1']
-}
+    'home': '',
+    'product': ['caramel', 'orangechoco', 'lavliheart', 'mangochia', 'strawberryyogurt',
+        'brauni', 'caramelyoghurt', 'strawberryyoghurt', 'cherry', 'marakuya'],
+    'catalog': ['Deserts', 'Cakes', 'Cheesecakes'],
+    'action': ['cherry_fever', 'new_year', 'cake_sale'],
+    'cart': ['caramel', 'orangechoco', 'lavliheart', 'mangochia', 'strawberryyogurt',
+        'brauni', 'caramelyoghurt', 'strawberryyoghurt', 'cherry', 'marakuya', 'clear'],
+    'order': ['1']
+};
 
 let pages = {
-    "home": homePage,
-    "product": productPage,
-    "catalog": catalogPage,
-    "action": actionPage,
-    "cart": cartPage,
-    "order": orderPage
-}
+    'home': homePage,
+    'product': productPage,
+    'catalog': catalogPage,
+    'action': actionPage,
+    'cart': cartPage,
+    'order': orderPage
+};
 
 const loader = `
     <div class="svg-loader">
@@ -62,10 +62,10 @@ const loader = `
         </circle>
     </svg>
     </div>
-    `
+    `;
 
 function changePage(){
-    document.getElementById("page-content").innerHTML = loader;
+    document.getElementById('page-content').innerHTML = loader;
 
     const url = window.location.hash.substring(1);
     const splitedUrl = url.split('/');
@@ -119,7 +119,7 @@ function loadContent(route, hash=null) {
     window.addEventListener('hashchange', () => changePage(homePage));
 
     homePage.loadHome();
-    cartPage.loadPage()
+    cartPage.loadPage();
 
 })();
 
