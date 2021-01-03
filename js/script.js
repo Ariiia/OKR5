@@ -5,6 +5,9 @@ import Action from './action.js';
 import Cart from './cart.js';
 import Order from './order.js';
 
+import '../cart.css';
+import '../style.css';
+
 let homePage = new Home();
 let productPage = new Product();
 let catalogPage = new Catalog();
@@ -12,7 +15,7 @@ let actionPage = new Action();
 let cartPage = new Cart();
 let orderPage = new Order(cartPage);
 
-let routs = {
+const routs = {
     'home': '',
     'product': ['caramel', 'orangechoco', 'lavliheart', 'mangochia', 'strawberryyogurt',
         'brauni', 'caramelyoghurt', 'strawberryyoghurt', 'cherry', 'marakuya'],
@@ -23,7 +26,7 @@ let routs = {
     'order': ['1']
 };
 
-let pages = {
+const pages = {
     'home': homePage,
     'product': productPage,
     'catalog': catalogPage,
@@ -93,6 +96,8 @@ function changePage(){
 }
 
 function loadContent(route, hash=null) {
+
+
     if (route in routs) {
         if (hash != null && routs[route].includes(hash)) {
             let page = pages[route];

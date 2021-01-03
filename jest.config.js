@@ -1,4 +1,5 @@
 module.exports = {
     collectCoverage: true,
-    transform: { '\\.js$': 'babel-jest', },
+    transform: {'\\.js$': 'babel-jest', },
+    "verbose": false
 };

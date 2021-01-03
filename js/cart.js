@@ -11,9 +11,8 @@ export default class Cart {
 
     async loadPage(subHash) {
 
-        this.products = await getDB('https://my-json-server.typicode.com/Ariiia/OKR4/products');
-
         if (subHash == null){
+            this.products = await getDB('https://my-json-server.typicode.com/Ariiia/OKR4/products');
             this.loadCart();
             return false;
         }
