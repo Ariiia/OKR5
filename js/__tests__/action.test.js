@@ -5,10 +5,6 @@ import {getDB} from '../mainDB';
 import Action from '../action';
 
 
-
-
-
-
 describe('Action class', ()=> {
 
     let _;
@@ -66,7 +62,7 @@ describe('Action class', ()=> {
         });
 
         it('should get action from DB', async ()=>{
-
+           
             let data = await getDB('https://my-json-server.typicode.com/Ariiia/OKR4/actions');
             let actions = data.actions;
 

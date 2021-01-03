@@ -44,9 +44,11 @@ export default class Cart {
         page.innerHTML = this.loadCartTemplate();
 
         if(cartLocalStorage.length == 0){
-            // disable buttons
+            let button=getElementById("orbut");
+            button.style.display="none";
         } else {
-            // enable 
+            let button=getElementById("orbut");
+            button.style.display="inline-block";
         }
 
         let cart_body = document.querySelector('.cart-body');
@@ -158,7 +160,7 @@ export default class Cart {
                         <strong><span class="amount" id="total-price">${this.totalPrice}</span> ₴</strong>
                     </p>
                     <p class="cart-button">
-                        <a href="#order"class="button checkout">
+                        <a href="#order"class="button checkout" id="orbut">
                             Оформление заказа
                         </a>
                     </p>
