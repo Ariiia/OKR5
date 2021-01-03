@@ -108,7 +108,7 @@ const DB = `
         "orders": []
     }`;
 
-export async function getDB(){
+export function getDB(){
     return JSON.parse(DB);
 }
 

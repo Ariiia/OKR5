@@ -5,9 +5,12 @@ import Cart from '../cart';
 describe('Order class', ()=> {
 
     let _;
+    let c;
     beforeAll(()=>{
         document.body.innerHTML = '<div id="page-content"></div>';
-        _ = new Order(Cart);
+        c = new Cart();
+        _ = new Order(c);
+        
     });
 
 
@@ -64,7 +67,7 @@ describe('Order class', ()=> {
         
         it('loadAction should be defined', ()=>{
             _.loadValidation();
-            expect(_.loadValidation).toBeDefined(); // to be changed
+            expect(_.loadValidation).toBeDefined(); 
         });
        
     });
@@ -83,11 +86,11 @@ describe('Order class', ()=> {
                 cvv: '345'
             };
 
+            history.pushState(null, null, '#order/' + id);
             const orderedItems = jest.fn();
             Order.prototype.orderedItems = function (){
                 return '';
             };
-
 
             let result = `
             <p class="order-top">Мы готовим ваш заказ </p>
@@ -141,7 +144,7 @@ describe('Order class', ()=> {
         
         it('orderedItems should be defined', ()=>{
             _.orderedItems();
-            expect(_.orderedItems).toBeDefined(); // to be changed
+            expect(_.orderedItems).toBeDefined();
         });
        
     });

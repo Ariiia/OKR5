@@ -67,7 +67,7 @@ const loader = `
     </div>
     `;
 
-function changePage(){
+export function changePage(){
     document.getElementById('page-content').innerHTML = loader;
 
     const url = window.location.hash.substring(1);
@@ -95,9 +95,7 @@ function changePage(){
     }
 }
 
-function loadContent(route, hash=null) {
-
-
+export function loadContent(route, hash=null) {
     if (route in routs) {
         if (hash != null && routs[route].includes(hash)) {
             let page = pages[route];

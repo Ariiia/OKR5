@@ -4,6 +4,11 @@ jest.mock('../mainDB');
 import {getDB} from '../mainDB';
 import Action from '../action';
 
+
+
+
+
+
 describe('Action class', ()=> {
 
     let _;

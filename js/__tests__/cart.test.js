@@ -140,6 +140,24 @@ describe('Cart class', ()=> {
         
     });
 
+    describe('catalog: loadCartDesertTemplate', ()=>{
+        const cake = {
+            'url': 'caramel',
+            'title': 'Чизкейк Карамельный',
+            'category': 'Чизкейки',
+            'description': '<p>Мусс на основе кешью крема и добавлением ферментов. Нежная текстура кешью крема с веганской карамелью. Основа из миндаля. </p>',
+            'price': 135,     
+            'image': './images/product_ch2.jpg'
+        };
+
+        it('loadCartDesertTemplate should be defined', ()=>{
+            _.loadCartDesertTemplate(cake, 1);
+            expect(_.loadCartDesertTemplate).toBeDefined();
+        });
+
+        
+    });
+
     describe('Cart: clearCart', ()=>{
 
         it('clearCart should be defined', ()=>{
@@ -147,6 +165,11 @@ describe('Cart class', ()=> {
             expect(_.clearCart).toBeDefined();
         });
         
+        it('clearCart should clear localStorage', ()=>{
+            expect(localStorage.getItem('cart')).toStrictEqual(null);
+            expect(_.totalPrice).toStrictEqual(0);
+            expect(_.totalProducts).toStrictEqual(0);
+        });
     });
 
 

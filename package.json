@@ -25,8 +25,8 @@
   ],
   "homepage": "https://github.com/Ariiia/OKR5#readme",
   "devDependencies": {
-    "@babel/preset-env": "^7.12.7",
     "@babel/plugin-transform-runtime": "^7.12.10",
+    "@babel/preset-env": "^7.12.7",
     "babel-jest": "^26.6.3",
     "copy-webpack-plugin": "^6.3.2",
     "css-loader": "^5.0.1",
