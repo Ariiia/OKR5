@@ -43,13 +43,6 @@ export default class Cart {
 
         page.innerHTML = this.loadCartTemplate();
 
-        if(cartLocalStorage.length == 0){
-            let button=getElementById("orbut");
-            button.style.display="none";
-        } else {
-            let button=getElementById("orbut");
-            button.style.display="inline-block";
-        }
 
         let cart_body = document.querySelector('.cart-body');
         let counterCart = document.getElementById('cart-counter');
